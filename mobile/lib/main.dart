@@ -12,6 +12,8 @@ class MyApp extends StatelessWidget {
     const String kediAdi = 'Pati';
     const int adimSayisi = 0;
     const int gunlukHedef = 5000;
+    const int kalanAdim = gunlukHedef - adimSayisi;
+    const int yuzde = adimSayisi * 100 ~/ gunlukHedef;
 
     return MaterialApp(
       title: 'Adım Sayar',
@@ -32,11 +34,14 @@ class MyApp extends StatelessWidget {
                 style: TextStyle(fontSize: 24),
               ),
               const SizedBox(height: 20),
+              const Icon(Icons.directions_walk, size: 40, color: Colors.orange),
               const Text(
                 'Bugünkü adımlarım: $adimSayisi',
                 style: TextStyle(fontSize: 20),
               ),
               const Text('Günlük hedefim: $gunlukHedef adım'),
+              const Text('Hedefe kalan: $kalanAdim adım'),
+              const Text('Tamamlanan: %$yuzde'),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {

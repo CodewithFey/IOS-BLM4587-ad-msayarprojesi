@@ -13,3 +13,9 @@ Uygulamanın ilk ekranını hazırladık. Kedi görseli, bugünkü adım sayıs�
 Ekranın yerleşimini düzenledik. Adım bilgisi ince bir barla birlikte bir kartta, hedef, kalan ve tamamlanan değerleri de altta yan yana duruyor. Kedinin görseli ve mesajı tamamlanan yüzdeye göre değişiyor.
 
 <img src="ekran_goruntuleri/hafta2.png" width="220">
+
+## Hafta 3
+
+Ana sayfayı StatefulWidget yaptık, artık ekrandaki değerler butonlarla değişiyor. Günlük hedef - ve + butonlarıyla 500'er adım değiştirilebiliyor, +500 adım butonuyla adım eklenebiliyor ve kedi buna göre değişiyor. Hedefe ulaşınca ve hedef 1000'in altına indirilmek istenince SnackBar ile mesaj çıkıyor, adımlar sıfırlanmadan önce onay soruluyor.
+
+<img src="ekran_goruntuleri/hafta3.png" width="220">

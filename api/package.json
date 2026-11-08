@@ -1,0 +1,14 @@
+{
+  "name": "adim-sayar-api",
+  "version": "1.0.0",
+  "description": "Adım Sayar uygulamasının Web API projesi",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Yusuf Tarlak",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}

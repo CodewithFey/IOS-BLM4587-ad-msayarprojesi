@@ -18,6 +18,53 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class Aksesuar {
+  const Aksesuar({
+    required this.ad,
+    required this.bolge,
+    required this.resim,
+    required this.ikon,
+  });
+
+  final String ad;
+  final String bolge;
+  final String resim;
+  final String ikon;
+}
+
+const List<Aksesuar> aksesuarlar = [
+  Aksesuar(
+    ad: 'Parti Şapkası',
+    bolge: 'bas',
+    resim: 'assets/images/aksesuar_parti_sapkasi.png',
+    ikon: 'assets/images/ikon_parti_sapkasi.png',
+  ),
+  Aksesuar(
+    ad: 'Uyku Şapkası',
+    bolge: 'bas',
+    resim: 'assets/images/aksesuar_uyku_sapkasi.png',
+    ikon: 'assets/images/ikon_uyku_sapkasi.png',
+  ),
+  Aksesuar(
+    ad: 'Çiçek Taç',
+    bolge: 'bas',
+    resim: 'assets/images/aksesuar_cicek_tac.png',
+    ikon: 'assets/images/ikon_cicek_tac.png',
+  ),
+  Aksesuar(
+    ad: 'Gözlük',
+    bolge: 'yuz',
+    resim: 'assets/images/aksesuar_gozluk.png',
+    ikon: 'assets/images/ikon_gozluk.png',
+  ),
+  Aksesuar(
+    ad: 'Kırmızı Fular',
+    bolge: 'boyun',
+    resim: 'assets/images/aksesuar_kirmizi_fular.png',
+    ikon: 'assets/images/ikon_kirmizi_fular.png',
+  ),
+];
+
 class AnaSayfa extends StatefulWidget {
   const AnaSayfa({super.key});
 
@@ -29,6 +76,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
   final String _kediAdi = 'Pati';
   int _adimSayisi = 0;
   int _gunlukHedef = 5000;
+  final Map<String, Aksesuar> _takilanlar = {};
 
   String _kediResmi(int yuzde) {
     if (yuzde == 0) {
@@ -80,6 +128,16 @@ class _AnaSayfaState extends State<AnaSayfa> {
     if (hedefeUlasmadi && _adimSayisi >= _gunlukHedef) {
       _mesajGoster('Tebrikler, bugünkü hedefine ulaştın!');
     }
+  }
+
+  void _aksesuarSec(Aksesuar aksesuar) {
+    setState(() {
+      if (_takilanlar[aksesuar.bolge] == aksesuar) {
+        _takilanlar.remove(aksesuar.bolge);
+      } else {
+        _takilanlar[aksesuar.bolge] = aksesuar;
+      }
+    });
   }
 
   Future<void> _sifirlamayiOnayla() async {
@@ -138,7 +196,21 @@ class _AnaSayfaState extends State<AnaSayfa> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(_kediResmi(yuzde), width: 170),
+                  SizedBox(
+                    width: 200,
+                    height: 200,
+                    child: Stack(
+                      children: [
+                        Image.asset(_kediResmi(yuzde)),
+                        if (_takilanlar['boyun'] != null)
+                          Image.asset(_takilanlar['boyun']!.resim),
+                        if (_takilanlar['yuz'] != null)
+                          Image.asset(_takilanlar['yuz']!.resim),
+                        if (_takilanlar['bas'] != null)
+                          Image.asset(_takilanlar['bas']!.resim),
+                      ],
+                    ),
+                  ),
                   Text(
                     'Merhaba, ben $_kediAdi!',
                     style: const TextStyle(
@@ -168,6 +240,24 @@ class _AnaSayfaState extends State<AnaSayfa> {
                         onPressed: _adimEkle,
                         child: const Text('+500 adım'),
                       ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for (Aksesuar aksesuar in aksesuarlar)
+                        IconButton(
+                          onPressed: () => _aksesuarSec(aksesuar),
+                          tooltip: aksesuar.ad,
+                          style: IconButton.styleFrom(
+                            backgroundColor:
+                                _takilanlar[aksesuar.bolge] == aksesuar
+                                ? Colors.orange.shade200
+                                : Colors.grey.shade100,
+                          ),
+                          icon: Image.asset(aksesuar.ikon, width: 32),
+                        ),
                     ],
                   ),
                 ],

@@ -16,7 +16,10 @@ Ekranın yerleşimini düzenledik. Adım bilgisi ince bir barla birlikte bir kar
 
 ## Hafta 3
 
-Ana sayfayı StatefulWidget yaptık, artık ekrandaki değerler butonlarla değişiyor. Günlük hedef - ve + butonlarıyla 500'er adım değiştirilebiliyor, +500 adım butonuyla adım eklenebiliyor ve kedi buna göre değişiyor. Hedefe ulaşınca ve hedef 1000'in altına indirilmek istenince SnackBar ile mesaj çıkıyor, adımlar sıfırlanmadan önce onay soruluyor. .
+Ana sayfayı StatefulWidget yaptık, artık ekrandaki değerler butonlarla değişiyor. Günlük hedef - ve + butonlarıyla 500'er adım değiştirilebiliyor, +500 adım butonuyla adım eklenebiliyor ve kedi buna göre değişiyor. Hedefe ulaşınca ve hedef 1000'in altına indirilmek istenince SnackBar ile mesaj çıkıyor, adımlar sıfırlanmadan önce onay soruluyor.
 
+Kedimize aksesuar takma ekledik. Baş, yüz ve boyun için ayrı aksesuarlar var, aynı bölgeden yenisi seçilince eskisi çıkıyor ve aksesuarlar Stack ile kedinin üstünde gösteriliyor.
+
+Ayrıca api klasöründe Node.js ve Express ile Web API projesini kurduk. Şimdilik aksesuar listesini ve tek bir aksesuarı döndüren uç noktalar var, aksesuar görselleri de API üzerinden açılabiliyor. Veritabanı bağlantısı gelecek hafta eklenecek.
 
 <img src="ekran_goruntuleri/hafta3.png" width="220">
